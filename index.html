@@ -1,0 +1,98 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>App del Clima</title>
+
+  <!-- Favicon SVG -->
+  <link rel="icon" href="src/img/icon.svg" type="image/svg+xml" />
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="src/style.css" />
+
+  <!-- Manifest PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#66a6ff" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+
+  <!-- Icono de Apple (usa el SVG) -->
+  <link rel="apple-touch-icon" href="src/img/icon.svg" />
+</head>
+<body>
+  <div class="app-container">
+    <h1>🌤️ Clima</h1>
+
+    <!-- Búsqueda manual -->
+    <form id="weatherForm">
+      <input
+        type="text"
+        id="cityInput"
+        placeholder="Introduce una ciudad..."
+        required
+      />
+      <button type="submit">Buscar ☀️</button>
+    </form>
+
+    <!-- Spinner y mensajes -->
+    <div id="spinner" class="spinner hidden">⏳ Cargando...</div>
+    <div id="error" class="error-message hidden"></div>
+
+    <!-- Clima actual -->
+    <div id="weatherResult" class="weather-card hidden">
+      <h2 id="cityName"></h2>
+      <p><strong>Comunidad Autónoma:</strong> <span id="stateName"></span></p>
+      <img id="weatherIcon" alt="Icono del clima" />
+      <p><strong>Temperatura:</strong> <span id="temp"></span>°C</p>
+      <p><strong>Humedad:</strong> <span id="humidity"></span>%</p>
+      <p id="description"></p>
+    </div>
+
+    <!-- Previsión diaria -->
+    <div id="dailyContainer" class="forecast-container hidden">
+      <h3>Previsión 5 días</h3>
+      <div id="dailyCards" class="forecast-cards"></div>
+    </div>
+
+    <!-- Previsión por horas (hoy) -->
+    <div id="hourlyContainer" class="forecast-container hidden">
+      <h3>Previsión por horas (hoy)</h3>
+      <div id="hourlyCards" class="forecast-cards forecast-hourly"></div>
+    </div>
+  </div>
+
+    <!-- … justo antes de </body> … -->
+
+  <footer class="site-footer">
+    <img src="src/img/logo.png" alt="Logo de ClimaApp" class="footer-logo">
+    <div class="social-icons">
+      <a href="https://github.com/daniilabradorr?tab=repositories" target="_blank" aria-label="GitHub">
+        <!-- GitHub SVG -->
+        <svg role="img" viewBox="0 0 24 24" width="24" height="24" fill="#333" xmlns="http://www.w3.org/2000/svg">
+          <title>GitHub</title>
+          <path d="M12 .297a12 12 0 00-3.793 23.412c.6.11.82-.258.82-.577v-2.234c-3.338.724-4.033-1.612-4.033-1.612a3.18 3.18 0 00-1.335-1.757c-1.09-.745.082-.729.082-.729a2.516 2.516 0 011.836 1.234 2.552 2.552 0 003.486.994 2.552 2.552 0 01.763-1.602c-2.665-.303-5.467-1.332-5.467-5.931a4.644 4.644 0 011.234-3.218 4.31 4.31 0 01.117-3.175s1.005-.323 3.3 1.23a11.4 11.4 0 016 0c2.29-1.554 3.295-1.23 3.295-1.23a4.31 4.31 0 01.12 3.175 4.64 4.64 0 011.23 3.218c0 4.61-2.807 5.625-5.48 5.921a2.865 2.865 0 01.815 2.225v3.3c0 .322.216.694.825.576A12 12 0 0012 .297"/>
+        </svg>
+      </a>
+      <a href="https://www.linkedin.com/in/daniel-labrador-benito-6b794727b/" target="_blank" aria-label="LinkedIn">
+        <!-- LinkedIn SVG -->
+        <svg role="img" viewBox="0 0 24 24" width="24" height="24" fill="#0A66C2" xmlns="http://www.w3.org/2000/svg">
+          <title>LinkedIn</title>
+          <path d="M20.452 20.452H17.32v-5.569c0-1.328-.024-3.036-1.852-3.036-1.855 0-2.14 1.45-2.14 2.947v5.658H10.17V9h2.995v1.561h.043c.418-.785 1.438-1.61 2.962-1.61 3.166 0 3.752 2.084 3.752 4.792v6.709zM5.337 7.433a1.742 1.742 0 110-3.484 1.742 1.742 0 010 3.484zm1.51 13.019H3.827V9h3.02v11.452zM22.225 0H1.771C.792 0 0 .771 0 1.728v20.543C0 23.231.792 24 1.771 24h20.451C23.201 24 24 23.231 24 22.271V1.728C24 .771 23.201 0 22.225 0z"/>
+        </svg>
+      </a>
+    </div>
+  </footer>
+
+  <script src="src/main.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .register('service-worker.js')
+        .then(() => console.log('Service Worker registrado'))
+        .catch(err => console.warn('Error registrando SW:', err));
+    }
+  </script>
+</body>
+</html>

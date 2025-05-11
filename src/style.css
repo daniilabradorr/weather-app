@@ -1,0 +1,148 @@
+/* src/style.css */
+/* Reset y layout */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg,#89f7fe,#66a6ff);
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  padding:1rem;
+}
+
+.app-container {
+  background:rgba(255,255,255,0.9);
+  border-radius:12px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.2);
+  padding:1.5rem;
+  width:100%;
+  max-width:380px;
+  text-align:center;
+  margin-bottom:4rem; /* espacio para el footer fijo */
+}
+
+/* Título */
+h1 {
+  margin-bottom:1rem;
+  color:#333;
+}
+
+/* Formulario */
+form {
+  display:flex;
+  margin-bottom:1rem;
+  overflow:hidden;
+}
+
+input {
+  flex:1 1 auto;
+  min-width:0;
+  padding:.75rem;
+  border:2px solid #ddd;
+  border-radius:8px 0 0 8px;
+  font-size:1rem;
+}
+
+button {
+  flex:0 0 auto;
+  padding:.75rem 1rem;
+  border:none;
+  background-color:#ffb347;
+  color:#fff;
+  font-size:1rem;
+  border-radius:0 8px 8px 0;
+  cursor:pointer;
+  transition:background-color .2s;
+}
+button:hover {
+  background-color:#ffcc33;
+}
+
+/* Spinner y error */
+.hidden { display:none; }
+.spinner { margin:1rem 0; font-size:1.1rem; color:#555; }
+.error-message { margin-bottom:1rem; color:#d8000c; }
+
+/* Clima actual */
+.weather-card {
+  background:#fff;
+  border-radius:10px;
+  padding:1rem;
+  box-shadow:0 4px 16px rgba(0,0,0,0.1);
+  margin-bottom:1.5rem;
+}
+.weather-card h2 { margin-bottom:.5rem; }
+.weather-card img {
+  width:80px; height:80px;
+  margin:.5rem auto;
+  display:block;
+}
+.weather-card p { margin:.25rem 0; font-size:.95rem; }
+
+/* Previsiones */
+.forecast-container { margin-top:1.5rem; }
+.forecast-cards {
+  display:flex; gap:.5rem;
+  flex-wrap:wrap; justify-content:center;
+}
+.forecast-card {
+  background:#fff;
+  border-radius:8px;
+  padding:.75rem;
+  text-align:center;
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
+  display:flex; flex-direction:column; align-items:center;
+  margin-bottom:.5rem;
+}
+/* Diaria: 2 por fila en móvil, 3 en tablet+ */
+#dailyCards .forecast-card { width:calc(50% - .5rem); }
+@media (min-width:600px) {
+  #dailyCards .forecast-card { width:calc(33.333% - .5rem); }
+}
+/* Horaria: 3 por fila en móvil, 5 en tablet+ */
+#hourlyCards .forecast-card { width:calc(33.333% - .5rem); }
+@media (min-width:600px) {
+  #hourlyCards .forecast-card { width:calc(20% - .5rem); }
+}
+.forecast-card h4 { margin-bottom:.25rem; text-transform:capitalize; }
+.forecast-card img {
+  margin:.25rem 0;
+}
+.forecast-card p { margin:.25rem 0; font-size:.95rem; }
+
+/* Footer fijo siempre visible */
+.site-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  border-top: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+  z-index: 1000;
+}
+
+.footer-logo {
+  width: 50px;
+  height: auto;
+}
+
+.social-icons a {
+  margin-left: 0.5rem;
+  margin-right: 1rem;
+  transition: transform 0.2s;
+}
+.social-icons a:hover {
+  transform: translateY(-2px);
+}

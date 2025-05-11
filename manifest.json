@@ -1,0 +1,16 @@
+{
+  "name": "ClimaApp",
+  "short_name": "Clima",
+  "description": "Consulta rápida del clima actual y previsión.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#89f7fe",
+  "theme_color": "#66a6ff",
+  "icons": [
+    {
+      "src": "src/img/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
